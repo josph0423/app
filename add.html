@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>add</title>
+    <script type="text/javascript" src="js/popper.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/fdb-all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>新增支出</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>日期</h4>
+          <input type="date" name="" value="" id="date">
+          <script>
+            var d = new Date();
+            var dat = {
+              year: d.getFullYear(),
+              month: d.getMonth() + 1,
+              date: d.getDate()
+            }
+            if (dat.month < 10) {
+              dat.month = "0" + dat.month;
+            }
+            if (dat.date < 10) {
+              dat.date = "0" + dat.date;
+            }
+            $("#date")
+              .val(dat.year + "-" + dat.month + "-" + dat.date);
+
+          </script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>類別</h4>
+          <select id="kind">
+            <option value="">未選擇類別</option>
+            <option value="食">食</option>
+            <option value="衣">衣</option>
+            <option value="住">住</option>
+            <option value="行">行</option>
+            <option value="育">育</option>
+            <option value="樂">樂</option>
+            <option value="其它">其它</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>金額</h4>
+          <input type="number" name="" value="" id="price">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>備註</h4>
+          <input type="text" name="" value="" id="remark" aria-invalid="true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" name="button" class="btn btn-info submit" id="button">送出</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/add.js"></script>
+  </body>
+
+</html>

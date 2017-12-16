@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>findData</title>
+    <script type="text/javascript" src="js/popper.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/fdb-all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/find10Data.css">
+  </head>
+
+  <body>
+
+    <div class="container main">
+      <div class="row title">
+        <h1>支出查詢</h1>
+      </div>
+
+      <div class="row form">
+
+        <div class="col-md-6">
+          <button id="btn_search_month" class="btn btn-primary">查詢本月份資訊</button>
+        </div>
+
+        <div class="col-md-6">
+          從：<input class="form_from" type="date" id="date">
+          <script>
+            var d = new Date();
+            var dat = {
+              year: d.getFullYear(),
+              month: d.getMonth() + 1,
+              date: d.getDate()
+            }
+            if (dat.month < 10) {
+              dat.month = "0" + dat.month;
+            }
+            if (dat.date < 10) {
+              dat.date = "0" + dat.date;
+            }
+            $("#date")
+              .val(dat.year + "-" + dat.month + "-" + dat.date);
+
+          </script><br> 到：
+          <input class="form_to" type="date"><br>
+          <button id="btn_search_date" class="btn btn-primary">查詢</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <td>類別</td>
+              <td>金額</td>
+              <td>比例</td>
+            </tr>
+          </thead>
+          <tbody id="myTbody2">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>日期</td>
+              <td>種類</td>
+              <td>金額</td>
+              <td>備註</td>
+            </tr>
+          </thead>
+          <tbody id="myTbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/findData.js"></script>
+  </body>
+
+</html>

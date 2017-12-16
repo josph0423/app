@@ -1,15 +1,17 @@
-
-.container{
-    border: 1px solid #000;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 微軟正黑體;
 }
 
 
-.row{
-  width:15em;
-  margin: 1em auto 0 auto;
-}
-
-
-.submit{
-  width:12em;
+a {
+  width: 100px;
 }
