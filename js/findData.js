@@ -1,4 +1,30 @@
+
+
 function show( query ) {
+
+	window.category = [ {
+		kind: "食",
+		much: 0
+	}, {
+		kind: "衣",
+		much: 0
+	}, {
+		kind: "住",
+		much: 0
+	}, {
+		kind: "行",
+		much: 0
+	}, {
+		kind: "育",
+		much: 0
+	}, {
+		kind: "樂",
+		much: 0
+	}, {
+		kind: "其它",
+		much: 0
+		 } ];
+
 	$( "#myTbody" )
 		.text( "" );
 	$( "#myTbody2" )
@@ -35,28 +61,6 @@ function show( query ) {
 					.text( item.remark ) ) )
 	} )
 
-	window.category = [ {
-		kind: "食",
-		much: 0
-	}, {
-		kind: "衣",
-		much: 0
-	}, {
-		kind: "住",
-		much: 0
-	}, {
-		kind: "行",
-		much: 0
-  }, {
-		kind: "育",
-		much: 0
-	}, {
-		kind: "樂",
-		much: 0
-	}, {
-		kind: "其它",
-		much: 0
-		 } ];
 	for ( var i = 0; i < data.length; i++ ) {
 		for ( var j = 0; j < category.length; j++ ) {
 			if ( data[ i ].kind == category[ j ].kind ) {
@@ -67,28 +71,26 @@ function show( query ) {
 
 
 
-	for ( var i = 0; i < category.length; i++ ) {
-		$( "#myTbody2" )
-			.append(
-				$( "<tr>" )
-				.append( $( "<td>" )
-					.text( category[ i ].kind ) )
-				.append( $( "<td>" )
-					.text( category[ i ].much ) )
-				.append( $( "<td>" )
-					.text( function {
-							if ( category[ i ].much == 0 ) {
-								return "0%";
-							} else {
-								var a = ( category[ i ].much / allMuch() * 100 )
-									.toFixed( 2 ) + "%" );
-							return a;
-						}
-					}
-				)
-			)
-	}
+		for ( var i = 0; i < category.length; i++ ) {
 
+			if ( category[ i ].much == 0 ) {
+				var a = "0%";
+			} else {
+				var a = ( category[ i ].much / allMuch() * 100 )
+					.toFixed( 1 ) + "%";
+			}
+
+
+			$( "#myTbody2" )
+				.append(
+					$( "<tr>" )
+					.append( $( "<td>" )
+						.text( category[ i ].kind ) )
+					.append( $( "<td>" )
+						.text( category[ i ].much ) )
+					.append( $( "<td>" )
+						.text( a ) ) );
+		}
 }
 
 function allMuch() {
@@ -108,5 +110,4 @@ myCollection.load();
 
 show();
 
-$( "#btn_search_date" )
-	.on( "click", show );
+$( "#btn_search_date" ).on( "click", show );

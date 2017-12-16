@@ -33,23 +33,6 @@ $( "#button" )
 				.val( "" );
 			$( "#remark" )
 				.val( "" );
-		}
-		$( "#date" )
-			.removeClass( "input-warm" );
-		$( "#kind" )
-			.removeClass( "input-warm" );
-		$( "#price" )
-			.removeClass( "input-warm" );
-		if ( data.date == "" ) {
-			$( "#date" )
-				.addClass( "input-warm" );
-		}
-		if ( data.kind == "" ) {
-			$( "#kind" )
-				.addClass( "input-warm" );
-		}
-		if ( data.price == "" ) {
-			$( "#price" )
-				.addClass( "input-warm" );
+			window.location.href = "index.html";
 		}
 	} );
