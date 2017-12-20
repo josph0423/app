@@ -6,9 +6,10 @@ body {
   padding: 0px;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
   font-family: 微軟正黑體;
+  color: #FFF;
+  font-size: 20px;
 }
 
 body {
@@ -19,10 +20,32 @@ body {
 
 
 .btn {
-  width: 200px;
-  font-size: 20px;
+  width: 300px;
+  height: 50px;
+  font-size: 25px;
 }
 
 .row {
-  margin: 20px;
+  overflow: auto;
+}
+
+.bottm {
+  padding-top: 20px;
+}
+
+.tab {
+  width: 350px;
+  padding-top: 50px;
+}
+
+.img {
+  padding-bottom: 40px;
+  margin-top: 50px;
+}
+
+img {
+  margin: auto;
+  display: block;
+  border-radius: 100%;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.5);
 }

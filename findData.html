@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>findData</title>
     <script type="text/javascript" src="js/popper.js"></script>
@@ -16,6 +16,7 @@
 
   <body>
 
+
     <a type="button" class="btn" id="goHome" href="index.html">Home</a>
 
     <div class="container main">
@@ -24,37 +25,41 @@
       </div>
 
       <div class="row form">
-
-        <div class="col-md-6">
-          <button id="btn_search_month" class="btn btn-primary">查詢本月份資訊</button>
+        <div class="top-10px">
+          從 : <input class="form_from" type="date" id="date2">
         </div>
-
-        <div class="col-md-6">
-          從：<input class="form_from" type="date" id="date">
+        <div class="top-10px">
+          到 : <input class="form_to" type="date" id="date">
           <script>
             var d = new Date();
             var dat = {
-              year: d.getFullYear(),
-              month: d.getMonth() + 1,
-              date: d.getDate()
+              year: d.getFullYear() + "",
+              month: (d.getMonth() + 1) + "",
+              date: d.getDate() + ""
             }
-            if (dat.month < 10) {
-              dat.month = "0" + dat.month;
+            if (dat.month.length < 2) {
+              dat.month += "0";
             }
-            if (dat.date < 10) {
-              dat.date = "0" + dat.date;
+            if (dat.date.length < 2) {
+              dat.date += "0";
+            }
+            for (; dat.year.length < 4; i++) {
+              dat.year += "0";
             }
             $("#date")
               .val(dat.year + "-" + dat.month + "-" + dat.date);
 
-          </script><br> 到：
-          <input class="form_to" type="date"><br>
+          </script>
+        </div>
+        <div class="top-10px">
           <button id="btn_search_date" class="btn btn-primary">查詢</button>
         </div>
+        <div class="top-10px">
+          <button id="btn_search_month" class="btn btn-primary">查詢本月份資訊</button>
+        </div>
       </div>
-
       <div class="row">
-        <table class="table table-bordered ">
+        <table class="table">
           <thead>
             <tr>
               <td>類別</td>
@@ -68,7 +73,7 @@
       </div>
 
       <div class="row">
-        <table class="table table-bordered ">
+        <table class="table">
           <thead>
             <tr>
               <td>#</td>

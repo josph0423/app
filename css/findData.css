@@ -5,20 +5,22 @@ body {
   margin: 0px;
   padding: 0px;
   display: flex;
+  justify-content: center;
   text-align: center;
   font-family: 微軟正黑體;
   color: #FFF;
   font-size: 20px;
 }
 
+
 body {
-  background-image: url(../images/casey-horner-423559.jpg);
+  background-image: url(../images/jose-duarte-317893.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
 
-input,
-select {
+
+input {
   width: 200px;
   height: 35px;
   background-color: rgba(100, 100, 100, 0.5);
@@ -26,18 +28,26 @@ select {
   border-radius: 10px;
 }
 
+.top-10px {
+  margin-top: 10px;
+}
+
 .btn {
   width: 200px;
   font-size: 20px;
 }
+
 
 .row {
   margin: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   margin-top: 50px;
-  overflow: scroll;
+  padding: 10px;
+  width: 350px;
+  overflow: auto;
 }
+
 
 #goHome {
   background-color: rgba(0, 0, 0, 0.5);

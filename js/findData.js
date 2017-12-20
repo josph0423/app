@@ -1,6 +1,11 @@
+var fdb = new ForerunnerDB();
+// 創造資料庫
+var db = fdb.db( "myDB" );
+// 創造資料表
+var myCollection = db.collection( 'myCollection' );
+myCollection.load( show );
 
-
-function show( query ) {
+function show() {
 
 	window.category = [ {
 		kind: "食",
@@ -42,7 +47,7 @@ function show( query ) {
 	}, {
 		$orderBy: {
 			date: -1
-		},
+		}
 	} );
 
 	console.log( data );
@@ -71,43 +76,59 @@ function show( query ) {
 
 
 
-		for ( var i = 0; i < category.length; i++ ) {
+	for ( var i = 0; i < category.length; i++ ) {
 
-			if ( category[ i ].much == 0 ) {
-				var a = "0%";
-			} else {
-				var a = ( category[ i ].much / allMuch() * 100 )
-					.toFixed( 1 ) + "%";
-			}
-
-
-			$( "#myTbody2" )
-				.append(
-					$( "<tr>" )
-					.append( $( "<td>" )
-						.text( category[ i ].kind ) )
-					.append( $( "<td>" )
-						.text( category[ i ].much ) )
-					.append( $( "<td>" )
-						.text( a ) ) );
+		if ( category[ i ].much == 0 ) {
+			var a = "0%";
+		} else {
+			var a = ( ( category[ i ].much / allMuch() * 100 )
+				.toFixed( 1 ) ) + "%";
 		}
+
+
+		$( "#myTbody2" )
+			.append(
+				$( "<tr>" )
+				.append( $( "<td>" )
+					.text( category[ i ].kind ) )
+				.append( $( "<td>" )
+					.text( category[ i ].much ) )
+				.append( $( "<td>" )
+					.text( a ) ) );
+	}
 }
 
 function allMuch() {
 	var allMuch = 0;
 	for ( var i = 0; i < category.length; i++ ) {
-		allMuch += category[ i ].much;
+		allMuch += Number( category[ i ].much );
 	}
 	return allMuch;
 }
 
-var fdb = new ForerunnerDB();
-// 創造資料庫
-var db = fdb.db( "myDB" );
-// 創造資料表
-var myCollection = db.collection( 'myCollection' );
-myCollection.load();
 
-show();
-
-$( "#btn_search_date" ).on( "click", show );
+$( btn_search_month )
+	.on( "click", function () {
+		var d = new Date();
+		var dat = {
+			year: d.getFullYear() + "",
+			month: ( d.getMonth() + 1 ) + "",
+			date: d.getDate() + ""
+		}
+		if ( dat.month.length < 2 ) {
+			dat.month += "0";
+		}
+		if ( dat.date.length < 2 ) {
+			dat.date += "0";
+		}
+		for ( ; dat.year.length < 4; i++ ) {
+			dat.year += "0";
+		}
+		$( "#date2" )
+			.val( dat.year + "-" + dat.month + "-" + "01" );
+		$( "#date" )
+			.val( dat.year + "-" + dat.month + "-" + dat.date );
+		show();
+	} );
+$( "#btn_search_date" )
+	.on( "click", show );

@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>home</title>
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -15,15 +15,67 @@
 
   <body>
     <div class="container">
-      <div class="row">
-        <a href="add.html" class="btn btn-success">add.html</a>
+      <div class="row img">
+        <img src="images/money.png" alt="money" width="250" height="250">
       </div>
       <div class="row">
-        <a href="findData.html" class="btn btn-success">findData.html</a>
+        <a href="add.html" class="btn btn-default">新增支出</a>
+      </div>
+      <div class="row bottm">
+        <a href="findData.html" class="btn btn-default">支出查詢</a>
+      </div>
+      <div class="row tab">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>日期</td>
+              <td>種類</td>
+              <td>金額</td>
+              <td>備註</td>
+            </tr>
+          </thead>
+          <tbody id="myTbody">
+          </tbody>
+        </table>
       </div>
     </div>
 
+    <script>
+      var fdb = new ForerunnerDB();
+      // 創造資料庫
+      var db = fdb.db("myDB");
+      // 創造資料表
+      var myCollection = db.collection('myCollection');
+      myCollection.load(show);
 
+      function show() {
+        $("#myTbody")
+          .text("");
+        var data = myCollection.find();
+        var dt = [];
+        for (var i = 0; i < 10 && i <= data.length; i++) {
+          dt.push(data[data.length - i - 1]);
+        }
+        data = dt;
+        console.log(data);
+        data.forEach(function(item, index) {
+          $("#myTbody")
+            .append($("<tr>")
+              .append($("<td>")
+                .text(index + 1))
+              .append($("<td>")
+                .text(item.date))
+              .append($("<td>")
+                .text(item.kind))
+              .append($("<td>")
+                .text(item.price))
+              .append($("<td>")
+                .text(item.remark)))
+        })
+      }
+
+    </script>
   </body>
 
 </html>
